@@ -4,38 +4,22 @@
 
 public class Main {
 
-    public static void quickSort(int[] arr, int start, int end) {
-        if (start>=end) {
-            return;
-        }
-
-        int indexPivot =  partition(arr, start, end);
-        quickSort(arr, start, indexPivot -1);
-        quickSort(arr, indexPivot + 1, end);
-    }
-    public static int partition(int[] arr, int start, int end) {
-        int pivot = arr[end];
-        int i = start - 1;
-
-        for (; start < end; start++) {
-            if (arr[start] <= pivot) {
-                i++;
-                int temp = arr[i];
-                arr[i] = arr[start];
-                arr[start] = temp;
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length, temp;
+        for (int i = 0; i<n;i++) {
+            for (int j = 0; j < n - 1; j++) {
+                if (arr[j]>arr[j+1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
             }
         }
-
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[end];
-        arr[end] = temp;
-
-        return i + 1;
     }
 
     public static void main(String[] args) {
         int[] arr = new int[] {5,4,3,2,1};
-        quickSort(arr, 0, arr.length-1);
+        bubbleSort(arr);
         for (int x: arr) {
             System.out.println(x);
         }
